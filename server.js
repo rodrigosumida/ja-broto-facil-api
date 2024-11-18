@@ -20,8 +20,10 @@ const cors = require("cors");
 app.use(cors());
 
 const relatorioRoutes = require('./src/routes/relatorio.routes.js');
+const plantaRoutes = require('./src/routes/planta.routes.js');
 
 app.use('/api/relatorio', relatorioRoutes);
+app.use('/api/planta', plantaRoutes);
 
 app.on('pronto', () => {
     app.listen(port, '0.0.0.0', () => {

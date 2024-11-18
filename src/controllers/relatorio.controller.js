@@ -22,6 +22,16 @@ class RelatorioController {
             return res.status(400).json(error);
         }
     }
+    
+    async relatorio_buscar_ultimo(req, res) {
+        try {
+            const relatorio = await Relatorio.find({}).sort({ _id: -1 }).limit(1);
+            if (!relatorio) return res.status(406).json({ error: 'Erro busca ultimo relatorio' });
+            return res.status(200).json(relatorio);
+        } catch (error) {
+            return res.status(400).json(error);
+        }
+    }
 }
 
 module.exports = RelatorioController;
